@@ -1,0 +1,41 @@
+{
+  "name": "landscape-app",
+  "version": "1.0.0",
+  "description": "Provides an interface for landscape architects to communicate with property management firms and landscapers",
+  "main": "index.js",
+  "proxy": "http://localhost:3001/",
+  "scripts": {
+    "start": "node ./bin/www && yarn build",
+    "client": "cd client && yarn start",
+    "server": "nodemon ./bin/www",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "install": "cd client && yarn install",
+    "build": "cd client && yarn build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/killianmh/landscape-app.git"
+  },
+  "keywords": [
+    "landscape",
+    "architecture",
+    "property",
+    "management"
+  ],
+  "author": "Matt Killian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/killianmh/landscape-app/issues"
+  },
+  "homepage": "https://github.com/killianmh/landscape-app#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7"
+  }
+}
