@@ -15,7 +15,7 @@ class Site extends Component {
             <Router>
                 <Switch>
                     <Route 
-                        exact path = '/myDashboard'>
+                        exact path = '/mydashboard'>
 
                     </Route>
                 </Switch>
@@ -24,5 +24,5 @@ class Site extends Component {
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Site />, document.getElementById('root'));
 registerServiceWorker();

@@ -36,7 +36,7 @@ function onListening() {
     let bind = typeof addr === 'string'?
           'pipe ' + addr
         : 'port ' + addr.port;
-    debut('Listening on ' + bind);
+    debug('Listening on ' + bind);
 }
 
 // Normalize a port into a number, string, or false

@@ -23,8 +23,8 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 //Define routing to api
-app.use('/api', apiRoutes);
-app.use('/api/auth', auth);
+// app.use('/api', apiRoutes);
+// app.use('/api/auth', auth);
 
 //Catch 404 errors and forward to error handler
 app.use(function(req, res, next) {
