@@ -15,7 +15,7 @@ class Site extends Component {
             <Router>
                 <Switch>
                     <Route 
-                        path = '/mydashboard'>
+                        path = '/'>
                         component={App}
                     </Route>
                 </Switch>
