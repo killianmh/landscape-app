@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import './index.css';
-// import App from './App';
+import App from './App';
 
 import registerServiceWorker from './registerServiceWorker';
 
@@ -15,8 +15,8 @@ class Site extends Component {
             <Router>
                 <Switch>
                     <Route 
-                        exact path = '/mydashboard'>
-
+                        path = '/mydashboard'>
+                        component={App}
                     </Route>
                 </Switch>
             </Router>
