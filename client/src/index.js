@@ -14,10 +14,7 @@ class Site extends Component {
         return(
             <Router>
                 <Switch>
-                    <Route 
-                        path = '/'>
-                        component={App}
-                    </Route>
+                    <Route path = '/' component={App} />
                 </Switch>
             </Router>
         )
