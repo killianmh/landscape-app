@@ -2,7 +2,7 @@
 let app = require('../server.js');
 let debug = require('debug')('mean-app:server');
 let http = require('http');
-let db = require('../models');
+let db = require('../Models');
 
 /* Functions */
 
