@@ -34,7 +34,6 @@
   "bugs": {
     "url": "https://github.com/killianmh/landscape-app/issues"
   },
-  "homepage": "https://github.com/killianmh/landscape-app#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
