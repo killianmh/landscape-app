@@ -7,7 +7,7 @@ let bodyParser = require('body-parser');
 // Require api and auth routes
 let apiRoutes = require('./routes/api-routes/api-routes');
 let auth = require('./routes/auth-routes/auth-routes');
-let react = require('./client/build/index');
+let react = require('./client/build/index.html');
 
 //Initialize express app
 const app = express();
