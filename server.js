@@ -31,11 +31,11 @@ app.use('/api', apiRoutes);
 app.use('/api/auth', auth);
 
 // Any remaining requests return the React app so it can handle routing
-// app.get('*', function(req, res) {
-//     res.sendFile(path.resolve(__dirname, '/client/build', 'index.html'))
-// });
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, './client/build/index.html'))
+});
 
-app.use('*', react);
+// app.use('*', react);
 
 //Catch 404 errors and forward to error handler
 app.use(function(req, res, next) {
