@@ -9,7 +9,7 @@ let apiRoutes = require('./routes/api-routes/api-routes');
 let auth = require('./routes/auth-routes/auth-routes');
 
 //Initialize express app
-let app = express();
+const app = express();
 
 //Use logger and bodyParser
 app.use(logger('dev'));
@@ -28,6 +28,11 @@ if(process.env.NODE_ENV === 'production'){
 //Define routing to api
 app.use('/api', apiRoutes);
 app.use('/api/auth', auth);
+
+// Any remaining requests return the React app so it can handle routing
+app.get('*', function(req, res) {
+    res.sendFile(path.resolve(__dirname, '/client/build', 'index.html'))
+});
 
 //Catch 404 errors and forward to error handler
 app.use(function(req, res, next) {
