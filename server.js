@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ 'extended': 'false'}));
 //If in production mode, use static build in client folder
 if(process.env.NODE_ENV === 'production'){
     console.log('In the static express build');
-    app.use(express.static(path.join(__dirname, '/client/build')));
+    app.use(express.static('client/build'));
     // app.get('/*', function (req, res) {
     //     res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
     //   });
@@ -32,7 +32,7 @@ app.use('/api/auth', auth);
 
 // Any remaining requests return the React app so it can handle routing
 app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, '/client/build/index.html'))
+    res.sendFile(path.join(__dirname, './client/build/index.html'))
 });
 
 // app.use('*', react);
