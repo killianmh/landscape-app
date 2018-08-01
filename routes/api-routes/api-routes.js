@@ -7,5 +7,8 @@ var passport = require('passport');
 const Op = require('sequelize').Op;
 var Sequelize = require('sequelize');
 
+router.get('/test', function(req, res) {
+    res.send("hello")
+})
 
 module.exports = router;

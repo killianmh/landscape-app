@@ -7,7 +7,6 @@ let bodyParser = require('body-parser');
 // Require api and auth routes
 let apiRoutes = require('./routes/api-routes/api-routes');
 let auth = require('./routes/auth-routes/auth-routes');
-let react = require('./client/build/index.html');
 
 //Initialize express app
 const app = express();
@@ -31,7 +30,7 @@ app.use('/api', apiRoutes);
 app.use('/api/auth', auth);
 
 // Any remaining requests return the React app so it can handle routing
-app.get('/*', function(req, res) {
+app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, './client/build/index.html'))
 });
 
