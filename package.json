@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Provides an interface for landscape architects to communicate with property management firms and landscapers",
   "main": "index.js",
-  "proxy": "http://localhost:3001/",
   "scripts": {
     "start": "node ./bin/www && npm run build",
     "client": "cd client && npm run start",
@@ -11,7 +10,8 @@
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "homepage": "https://immense-coast-86387.herokuapp.com/",
   "engines": {
