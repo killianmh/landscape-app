@@ -31,7 +31,7 @@ app.use('/api', apiRoutes);
 app.use('/api/auth', auth);
 
 // Any remaining requests return the React app so it can handle routing
-app.get('*', function(req, res) {
+app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, '/client/build/index.html'))
 });
 
