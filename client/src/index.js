@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 import './index.css';
 import App from './App';
-import Signup from './components/signup';
+import Signup from './components/signup/Signup';
 
 import registerServiceWorker from './registerServiceWorker';
 
