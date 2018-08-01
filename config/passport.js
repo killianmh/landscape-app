@@ -5,7 +5,7 @@ let JwtStrategy = require('passport-jwt').Strategy,
 let db = require('../Models');
 
 // Create new instance of passport strategy and check database to find user with matching password
-// JWT secret is stored on Heroku in the process.env variable
+// JWT secret is stored on Heroku in the process.env.landscapeSecret variable
 module.exports = function(passport) {
     let opts = {};
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");

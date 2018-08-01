@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 import './index.css';
 import App from './App';
+import Signup from './components/signup';
 
 import registerServiceWorker from './registerServiceWorker';
 
@@ -14,6 +15,7 @@ class Site extends Component {
         return(
             <Router>
                 <Switch>
+                    <Route exact path = '/signup' component={Signup} />
                     <Route exact path = '/' component={App} />
                 </Switch>
             </Router>
