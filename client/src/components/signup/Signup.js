@@ -25,7 +25,7 @@ class Signup extends Component {
 
     render () {
         return(
-            <div>Please Signup</div>
+            <div><p>Please Signup</p></div>
         )
     }
 }
