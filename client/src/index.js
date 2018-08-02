@@ -15,8 +15,10 @@ class Site extends Component {
         return(
             <Router>
                 <Switch>
-                    <Route exact path = '/signup' component={Signup} />
-                    <Route exact path = '/' component={App} />
+                    <Route exact path = '/signup' render={() => <Signup display={"signup"} />} />
+                    <Route exact path = '/login' render={() => <Signup display={"login"} />} />
+                    {/* Last route renders home component regardless of endpoint */}
+                    <Route path = '/' component={App} />
                 </Switch>
             </Router>
         )
