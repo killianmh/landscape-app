@@ -11,15 +11,48 @@ class Signup extends Component {
         super(props);
         this.state = {
             display: '',
-            email: '',
-            password: '',
-            userType: '',
 
-            firstName: '',
-            lastName: '',
-
-            crewName: '',
-            firmName: ''
+            signup : [
+                {   
+                    name: 'First Name',
+                    value: ''
+                },
+                {
+                    name: 'Last Name',
+                    value: ''
+                },
+                {
+                    name: 'Crew Name',
+                    value: ''
+                },
+                {
+                    name: 'Firm Name',
+                    value: ''
+                },
+                {
+                    name: 'Email',
+                    value: ''
+                },
+                {
+                    name: 'Password',
+                    value: ''
+                },
+                {
+                    name: 'User Type',
+                    value: ''
+                }
+            ],
+            
+            login: [
+                {
+                    name: 'Email',
+                    value: ''
+                },
+                {   
+                    name: 'Password',
+                    value: ''
+                }
+            ]
         }
     }
 
@@ -43,7 +76,11 @@ class Signup extends Component {
         switch (this.state.display){
             case "signup":
                 userInfo = this.state.signup;
+                break;
             case "login":
+                userInfo = this.state.login;
+                break;
+            default:
                 userInfo = this.state.login;
         }
         return(
