@@ -42,7 +42,9 @@ class Signup extends Component {
                     name: 'User Type',
                     placeholder: "Steve",
                     value: ''
-                },
+                }
+            ],
+            companyInfo: [
                 {
                     id: "crewName",
                     name: 'Crew Name',
@@ -98,13 +100,13 @@ class Signup extends Component {
                 break;
             default:
                 throw new Error('error in setting state for input form');
-                break;
         }
         let inputLine = state.find((element, i) => {
             if(element.id === e.target.name){
                 state[i].value = e.target.value;
                 return true
             }
+            return inputLine
         })
         this.setState(state);
     }

@@ -42,7 +42,7 @@ class SignupCard extends Component {
                                             </div>
                                         )
                                     }
-                                    if(inputField.id !== "crewName" && inputField.id !== "firmName"){
+                                    else{
                                         return(
                                             <div key={inputField.id} className="form-group mt-4 mb-5">
                                                 <label htmlFor={inputField.id}>Your {inputField.name}</label>
