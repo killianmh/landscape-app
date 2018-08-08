@@ -112,7 +112,33 @@ class Signup extends Component {
     }
 
     onSubmit = (e) => {
+        e.preventDefault();
+        let firstName, lastName, email, password, userType;
+        switch (this.state.display) {
+            case "signup":
+                firstName = this.state.signup[0].value;
+                lastName = this.state.signup[1].value;
+                email = this.state.signup[2].value;
+                password = this.state.signup[3].value;
+                userType = this.state.signup[4].value;
 
+                axios.post('/api/auth/signup', {firstName, lastName, email, password, userType} )
+                .then((res) => {
+                    console.log(res.data.message);
+                    if(res.data.success){
+                        <Redirect to="/dashboard" authenticated = {true} />
+                    }
+                }).catch((err) => {
+                    console.log(err);
+
+                })
+                break
+            case "login":
+                email = this.state.login[0].value;
+                password = this.state.signup[1].value;
+                break
+        }
+        
     }
 
     render () {
@@ -128,15 +154,19 @@ class Signup extends Component {
                 onClick: this.changeFormDisplay
             }];
         let userInfo;
+        let submitButton;
         switch (this.state.display){
             case "signup":
                 userInfo = this.state.signup;
+                submitButton = "Sign up"
                 break;
             case "login":
                 userInfo = this.state.login;
+                submitButton = "Login"
                 break;
             default:
                 userInfo = this.state.login;
+                submitButton = "Login"
                 break;
         }
         return(
@@ -145,6 +175,7 @@ class Signup extends Component {
                     links = {headerLinks} 
                     display = {this.state.display} 
                     userInfo = {userInfo}
+                    submitButton = {submitButton}
                     onChange = {(e) => {this.onChange(e)}}
                     onSubmit = {this.onSubmit} />
             </div>

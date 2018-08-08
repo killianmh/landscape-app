@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import './index.css';
 import App from './App';
 import Signup from './components/signup/Signup';
+import Dashboard from './pages/dashboard/Dashboard';
 
 import registerServiceWorker from './registerServiceWorker';
 
@@ -17,6 +18,7 @@ class Site extends Component {
                 <Switch>
                     <Route exact path = '/signup' render={() => <Signup display={"signup"} />} />
                     <Route exact path = '/login' render={() => <Signup display={"login"} />} />
+                    <Route exact path = '/dashboard' render={() => <Dashboard />} />
                     {/* Last route renders home component regardless of endpoint */}
                     <Route path = '/' component={App} />
                 </Switch>

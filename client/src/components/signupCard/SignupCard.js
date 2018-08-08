@@ -31,20 +31,21 @@ class SignupCard extends Component {
                                 {this.props.userInfo.map(inputField => {
                                     if(inputField.id === "userType"){
                                         return(
-                                            <div key={inputField.id} className="form-group mt-4 mb-5">
-                                            <label htmlFor={inputField.id}>Select your user type:</label>
-                                            <select className="form-control" name={inputField.id} onChange={this.props.onChange} required>
-                                                <option>Architect</option>
-                                                <option>Landscape Crew</option>
-                                                <option>Landscape Manager</option>
-                                                <option>Property Manager</option>
-                                            </select>
+                                            <div key={inputField.id} className="form-group mt-4 mb-4">
+                                                <label htmlFor={inputField.id}>Select your user type:</label>
+                                                <select className="form-control" name={inputField.id} onChange={this.props.onChange} defaultValue="User Type" required>
+                                                    <option value = 'User Type' disabled>User Type</option>
+                                                    <option value = 'Architect'>Architect</option>
+                                                    <option value = 'Landscape Crew'>Landscape Crew</option>
+                                                    <option value = 'Landscape Manager'>Landscape Manager</option>
+                                                    <option value = 'Property Manager'>Property Manager</option>
+                                                </select>
                                             </div>
                                         )
                                     }
                                     else{
                                         return(
-                                            <div key={inputField.id} className="form-group mt-4 mb-5">
+                                            <div key={inputField.id} className="form-group mt-4 mb-4">
                                                 <label htmlFor={inputField.id}>Your {inputField.name}</label>
                                                 <input  type="text" className="form-control" aria-describedby={inputField.id} 
                                                         placeholder={inputField.placeholder} name={inputField.id} 
@@ -53,6 +54,9 @@ class SignupCard extends Component {
                                         )
                                     }
                                 })}
+                                <div className="text-center">
+                                    <button onClick={this.props.onSubmit} type="submit" className="btn text-uppercase px-5">{this.props.submitButton}</button>
+                                </div>
                             </form>
                         </div>
                     </div>
