@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <p>This is a test</p>
+          <p>Home screen</p>
         </div>
       </div>
     );
