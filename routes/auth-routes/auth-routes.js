@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require('../../Models');
 var passport = require('passport');
 // require('../../config/passport')(passport);
-var bcrypt = require('bcrypt-nodejs');
+var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const Op = require('sequelize').Op;
 var Sequelize = require('sequelize');
