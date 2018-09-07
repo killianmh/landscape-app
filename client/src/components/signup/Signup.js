@@ -113,16 +113,18 @@ class Signup extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        let firstName, lastName, email, password, userType;
+        let userData;
         switch (this.state.display) {
             case "signup":
-                firstName = this.state.signup[0].value;
-                lastName = this.state.signup[1].value;
-                email = this.state.signup[2].value;
-                password = this.state.signup[3].value;
-                userType = this.state.signup[4].value;
-
-                axios.post('/api/auth/signup', {firstName, lastName, email, password, userType} )
+                userData = {
+                    firstName : this.state.signup[0].value,
+                    lastName : this.state.signup[1].value,
+                    email : this.state.signup[2].value,
+                    password : this.state.signup[3].value,
+                    userType : this.state.signup[4].value
+                }
+                
+                axios.post('/api/auth/signup', {userData} )
                 .then((res) => {
                     console.log(res.data.message);
                     if(res.data.success){
@@ -133,6 +135,7 @@ class Signup extends Component {
 
                 })
                 break
+
             case "login":
                 email = this.state.login[0].value;
                 password = this.state.signup[1].value;

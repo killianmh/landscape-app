@@ -16,10 +16,9 @@ module.exports = function(passport) {
                 id: jwt_payload.id
             }
         })
-        .then(function(user) {
-            // If user object does not exist, there was an error in db query
-            if(!user) {
-                return done(null, false);
+        .then(function(error, user) {
+            if(error){
+                return done(error, false);
             }
             // Successful authentication; user found and returned
             if(user) {
