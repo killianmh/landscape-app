@@ -126,7 +126,7 @@ class Signup extends Component {
                 
                 axios.post('/api/auth/signup', {userData} )
                 .then((res) => {
-                    console.log(res.data.message);
+                    console.log(res.data)
                     if(res.data.success){
                         <Redirect to="/dashboard" authenticated = {true} />
                     }

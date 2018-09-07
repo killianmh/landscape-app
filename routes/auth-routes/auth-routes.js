@@ -8,18 +8,8 @@ var jwt = require('jsonwebtoken');
 const Op = require('sequelize').Op;
 var Sequelize = require('sequelize');
 
-// Encrypt password using async method
+// Store saltRounds for use in bcrypt
 const saltRounds = 10;
-const generateHash = function(password) {
-    return bcrypt.hash(password, saltRounds, function(err, hash) {
-        if(err){
-            return err;
-        }
-        else {
-            return hash;
-        }
-    })
-}
 
 // Validate password
 
@@ -39,27 +29,40 @@ const missingData = function (object) {
 
 // Signup Route
 router.post('/signup', function(req, res){
-    let newUser = req.body.userData;
-    if(missingData(newUser)){
+    let newUserType = req.body.userData;
+
+    if(missingData(newUserType)){
+        console.log("missing user data")
         res.status(500).send('Please supply email and password!');
     }
     else{
-        newUser.password = generateHash(newUser.password);
-
         //Check to see if user exists
         db.User.findOne({
            where:{
-               email: newUser.email
+               email: newUserType.email
            } 
         }).then(function(existingUser){
             if(existingUser === null){
-                db.User.create(newUser).then(function(user){
-                    res.status(200).json({
-                        success: true,
-                        message: 'Signup successful'
-                    })
-                }).catch(function(error){
-                    res.status(500).send(error)
+                console.log("no existing user found")
+                bcrypt.hash(newUserType.password, saltRounds, function(err, hash){
+                    if(err){
+                        return err;
+                    }
+                    else {
+                        let newUser = {
+                            email: newUserType.email,
+                            password: hash,
+                            userType: newUserType.userType
+                        }
+                        db.User.create(newUser).then(function(user){
+                            res.status(200).json({
+                                success: true,
+                                message: 'Signup successful'
+                            })
+                        }).catch(function(error){
+                            res.status(500).send(error)
+                        })
+                    }
                 })
             }
             else {
