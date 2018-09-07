@@ -11,6 +11,20 @@ var Sequelize = require('sequelize');
 // Store saltRounds for use in bcrypt
 const saltRounds = 10;
 
+// Generate JWT token (only call this after authenticating user!!!)
+const genJWT = function(user) {
+    const JWTToken = jwt.sign(
+            user.toJSON(),
+            process.env.landscapeSecret,
+        {
+            expiresIn: '1h'
+        });
+    return res.status(200).json({
+        success: true,
+        token: JWTToken
+    })
+}
+
 // Validate password
 
 // Get JWT Token
@@ -55,6 +69,7 @@ router.post('/signup', function(req, res){
                             userType: newUserType.userType
                         }
                         db.User.create(newUser).then(function(user){
+                            genJWT(user);
                             res.status(200).json({
                                 success: true,
                                 message: 'Signup successful'

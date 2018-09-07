@@ -10,6 +10,7 @@ class Signup extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            authenticated: false,
             display: '',
 
             signup : [
@@ -128,7 +129,8 @@ class Signup extends Component {
                 .then((res) => {
                     console.log(res.data)
                     if(res.data.success){
-                        <Redirect to="/dashboard" authenticated = {true} />
+                        
+                        this.setState({authenticated: true})
                     }
                 }).catch((err) => {
                     console.log(err);
@@ -175,17 +177,22 @@ class Signup extends Component {
                 submitButton = "Login"
                 break;
         }
-        return(
-            <div className="container py-5 px-5">
-                <SignupCard  
-                    links = {headerLinks} 
-                    display = {this.state.display} 
-                    userInfo = {userInfo}
-                    submitButton = {submitButton}
-                    onChange = {(e) => {this.onChange(e)}}
-                    onSubmit = {this.onSubmit} />
-            </div>
-        )
+        if(this.state.authenticated){
+            return(<Redirect to='/dashboard'/>)
+        }
+        else{
+            return(
+                <div className="container py-5 px-5">
+                    <SignupCard  
+                        links = {headerLinks} 
+                        display = {this.state.display} 
+                        userInfo = {userInfo}
+                        submitButton = {submitButton}
+                        onChange = {(e) => {this.onChange(e)}}
+                        onSubmit = {this.onSubmit} />
+                </div>
+            )
+        }
     }
 }
 

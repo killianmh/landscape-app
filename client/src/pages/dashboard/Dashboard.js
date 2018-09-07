@@ -12,7 +12,6 @@ class Dashboard extends Component {
 
     componentDidMount(){
         console.log(this.state);
-        this.setState({authenticated: this.props.authenticated})
         console.log(this.state);
     }
 
