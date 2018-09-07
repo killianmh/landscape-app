@@ -137,8 +137,11 @@ class Signup extends Component {
                 break
 
             case "login":
-                email = this.state.login[0].value;
-                password = this.state.signup[1].value;
+                userData = {
+                    email : this.state.login[0].value,
+                    password : this.state.signup[1].value
+                }
+                
                 break
         }
         
