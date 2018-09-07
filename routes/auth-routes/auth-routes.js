@@ -13,6 +13,7 @@ const saltRounds = 10;
 
 // Generate JWT token (only call this after authenticating user!!!)
 const genJWT = function(user) {
+    console.log("inside genJWT function")
     const JWTToken = jwt.sign(
             user.toJSON(),
             process.env.landscapeSecret,
