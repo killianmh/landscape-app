@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import './Dashboard.css';
 
@@ -11,8 +12,15 @@ class Dashboard extends Component {
     };
 
     componentDidMount(){
-        console.log(this.state);
-        console.log(this.state);
+        // Put jwtToken from localstorage inside axios request header
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+        // Authenticate if user is logged in or not
+        axios.post("/api/auth/jwt").then((res) => {
+            if(res.data.success){
+                this.setState({authenticated: true})
+            }
+            console.log(this.state);
+        })
     }
 
     render(){

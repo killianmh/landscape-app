@@ -127,9 +127,8 @@ class Signup extends Component {
                 
                 axios.post('/api/auth/signup', {userData} )
                 .then((res) => {
-                    console.log(res.data)
                     if(res.data.success){
-                        
+                        localStorage.setItem('jwtToken', res.data.token);
                         this.setState({authenticated: true})
                     }
                 }).catch((err) => {

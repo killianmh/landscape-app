@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../../Models');
 var passport = require('passport');
-// require('../../config/passport')(passport);
+require('../../config/passport')(passport);
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const Op = require('sequelize').Op;
@@ -16,14 +16,11 @@ const genJWT = function(user) {
     console.log("inside genJWT function")
     const JWTToken = jwt.sign(
             user.toJSON(),
-            process.env.landscapeSecret,
+            "changeme!",
         {
             expiresIn: '1h'
         });
-    return res.status(200).json({
-        success: true,
-        token: JWTToken
-    })
+    return JWTToken
 }
 
 // Validate password
@@ -31,6 +28,13 @@ const genJWT = function(user) {
 // Get JWT Token
 
 // General route to authenticate JWT for protected React Router Routes
+router.post("/jwt", passport.authenticate('jwt', { session: false }), function(req, res){
+    console.log("inside jwt route")
+    res.status(200).json({
+        success: true,
+        user: req.user.dataValues
+    })
+})
 
 // Check for empty values in data object in request
 const missingData = function (object) {
@@ -39,7 +43,7 @@ const missingData = function (object) {
             return true
         }
     }
-    return false
+    return false 
 }
 
 // Signup Route
@@ -70,9 +74,10 @@ router.post('/signup', function(req, res){
                             userType: newUserType.userType
                         }
                         db.User.create(newUser).then(function(user){
-                            genJWT(user);
+                            let JWTToken = genJWT(user);
                             res.status(200).json({
                                 success: true,
+                                token: 'JWT ' + JWTToken,
                                 message: 'Signup successful'
                             })
                         }).catch(function(error){

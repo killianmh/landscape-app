@@ -9,16 +9,18 @@ let db = require('../Models');
 module.exports = function(passport) {
     let opts = {};
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
-    opts.secretOrKey = process.env.landscapeSecret;
+    // opts.secretOrKey = process.env.landscapeSecret;
+    opts.secretOrKey = "changeme!";
     passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+        console.log("inside passport authentication")
         db.User.findOne({
             where: {
                 id: jwt_payload.id
             }
-        })
-        .then(function(error, user) {
-            if(error){
-                return done(error, false);
+        }) 
+        .then(function(user) {
+            if(!user){
+                return done(null, false);
             }
             // Successful authentication; user found and returned
             if(user) {
