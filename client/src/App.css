@@ -1,3 +1,7 @@
+body {
+  font-family: 'Mukta Malar', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -28,11 +32,53 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 0;
+}
+
+.landing-container {
+  height: 85vh;
 }
 
 .landing-title {
-  height: 85vh;
   color: white;
-  font-family: 'Mukta Malar', sans-serif;
-  font-size: 200px;
+  font-size: 12rem;
+}
+
+.landing-button-row {
+  margin-bottom: 8rem;
+}
+
+.landing-button {
+  cursor: pointer;
+  color: white;
+  background-color: transparent;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border: 0.3rem solid white;
+  -webkit-transition-duration: 0.2s; /* Safari */
+  transition-duration: 0.2s;
+}
+
+.landing-button:hover {
+  background-color: #2C4C3D;
+  border-color: #2C4C3D;
+}
+
+.landing-why-container {
+  color: white;
+  background-color: #2C4C3D;
+}
+
+.landing-heading {
+  font-size: 3.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.landing-why-text {
+  font-size: 1.2rem;
+}
+
+.extra-space {
+  height: 40rem;
 }
