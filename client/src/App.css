@@ -26,6 +26,26 @@ body {
   font-size: large;
 }
 
+#loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -60px 0 0 -60px;
+  border: 16px solid;
+  border-radius: 50%;
+  border-color: #2C4C3D #499974 #499974;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
 .jumbo-background {
   /* height: 100vh; */
   background-image: url("../src/assets/images/hero2.jpg");
