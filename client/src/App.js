@@ -22,7 +22,11 @@ class App extends Component {
     //=========================================================
     // Check to see if DOM/images are loaded
     window.onload = () =>{
-      this.setState({loading: false});     
+      let intervalID = window.setInterval(() => {
+        window.clearInterval(intervalID);
+        this.setState({loading: false});
+      }, 5000);
+           
     }
     
   }
